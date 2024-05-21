@@ -1,0 +1,48 @@
+<table class="table border-collapse w-full mt-5" >
+  <!-- *ngIf="students.length > 0;else noDataAvailable" -->
+    <thead>
+        <tr class="bg-gray-400">
+            <th class="text-xl font-extrabold  text-slate-950 border-2 border-black">#</th>
+            <th class="text-lg font-bold uppercase text-slate-950 border-2 border-black">Prénom</th>
+            <th class="text-lg font-bold uppercase text-slate-950 border-2 border-black">Nom</th>
+            <th class="text-lg font-bold uppercase text-slate-950 border-2 border-black">Date Nais</th>
+            <th class="text-lg font-bold uppercase text-slate-950 border-2 border-black">Email</th>
+            <th class="text-lg font-bold uppercase text-slate-950 border-2 border-black">Adresse</th>
+            <th class="text-lg font-bold uppercase text-slate-950 border-2 border-black">Num Tel</th>
+            <th class="text-lg font-bold uppercase text-slate-950 border-2 border-black">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students" class="border-2 border-black">
+            <td class="border-2 border-black font-bold text-black">{{student.id}}</td>
+            <td class="border-2 border-black text-slate-950 font-medium">{{student.first_name}}</td>
+            <td class="border-2 border-black text-slate-950 font-medium">{{student.last_name}}</td>
+            <td class="border-2 border-black text-slate-950 font-medium">{{student.date_of_birth}}</td>
+            <td class="border-2 border-black text-slate-950 font-medium">{{student.email}}</td>
+            <td class="border-2 border-black text-slate-950 font-medium">{{student.address}}</td>
+            <td class="border-2 border-black text-slate-950 font-medium">{{student.phone_number}}</td>
+            <td class="border-2 border-black text-slate-950 font-medium">
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item"  (click)="editStudent(student.id)">Modifier</a>
+                        <a class="dropdown-item" href="#" (click)="deleteStudent(student.id)">Supprimer</a>
+                        <a class="dropdown-item" href="#">Détails</a>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<ng-template #noDataAvailable>
+    <div role="status">
+        <span>Loading...</span>
+    </div>
+</ng-template>
